@@ -6,15 +6,17 @@ $("form[name='form']").submit(function(event){
 function submitForm(){
     $( "#warn" ).fadeOut();
     $( "#message" ).fadeOut();
-    val = !$.isNumeric($("#form_sekValue").val().replace(',','.'));
+    sekVal = $("#form_sekValue").val().replace(',','.');
+    val = !$.isNumeric(sekVal);
     if(val === true){
         $( "#warn" ).html('Use value only').fadeIn();
     }else{
         $( "#message" ).text('Wait a moment ...').fadeIn();
         var currency = 'sek';
+        var amount = sekVal;
         $.ajax({
             type: "POST",
-            url: "/api/" + currency,
+            url: "/api/" + currency + "/" + amount,
             data: "",
             success : function(text){
                 formSuccess(text);
@@ -22,18 +24,14 @@ function submitForm(){
         });
     }
 }
-function round(value, decimals) {
 
-    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
-
-function formSuccess(pln){
-    if(pln == 'error'){
+function formSuccess(plnVal){
+    if(plnVal == 'error'){
         $( "#warn" ).html('System error - connection problem').fadeIn();
     }else {
         sekVal = $("#form_sekValue").val().replace(',','.');
-        plnVal = round(pln*sekVal,2);
         text = sekVal + " SEK is " + plnVal + " PLN";
+
         $( "#message" ).text(text);
         $( "#message" ).fadeIn();
     }

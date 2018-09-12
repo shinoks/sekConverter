@@ -8,4 +8,6 @@ cd sekConverter
 
 composer install
 
+// for symfony server
 
+bin/console server:start

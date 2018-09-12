@@ -36,7 +36,7 @@ class ConverterController extends AbstractController
         );
     }
 
-    public function getCurrentRates(string $currency = 'sek'): Response
+    public function getCurrentRates(int $amount,string $currency = 'sek'): Response
     {
         $client = new \GuzzleHttp\Client();
         try{
@@ -51,7 +51,8 @@ class ConverterController extends AbstractController
 
             return new Response('error');
         }
+        $plnValue =  round($json->rates[0]->mid * $amount,2);
 
-        return new Response($json->rates[0]->mid);
+        return new Response($plnValue);
     }
 }

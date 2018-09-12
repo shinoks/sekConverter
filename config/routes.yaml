@@ -2,5 +2,5 @@ sek_converter_ajax:
     path: /
     controller: App\Controller\ConverterController::ajax
 currency_value:
-    path: /api/{currency}
+    path: /api/{currency}/{amount}
     controller: App\Controller\ConverterController::getCurrentRates
