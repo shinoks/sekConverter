@@ -1,0 +1,24 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <div class="container well">
+        <h1>Serwis konwertujący korony szwedzkie (SEK) na polskie złotówki (PLN)</h1>
+
+        <div id="message" style="display: none" class="alert alert-success">
+            <span id="sekValue"></span> SEK to <span id="plnValue"></span> PLN
+        </div>
+        <div id="warn" style="display: none" class="alert alert-danger">
+
+        </div>
+
+        {{ form_start(form) }}
+        {{ form_errors(form.sekValue) }}
+        {{ form_label(form.sekValue) }}
+        {{ form_widget(form.sekValue) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/script.js"></script>
+{% endblock %}
