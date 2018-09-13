@@ -1,6 +1,6 @@
-sek_converter_ajax:
+index:
     path: /
-    controller: App\Controller\ConverterController::ajax
-currency_value:
-    path: /api/{currency}/{amount}
-    controller: App\Controller\ConverterController::getCurrentRates
+    controller: App\Controller\ConverterController::index
+api:
+    resource: "routes/api.yaml"
+    prefix: /api

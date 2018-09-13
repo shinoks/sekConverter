@@ -15,8 +15,8 @@ function submitForm(){
         var currency = 'sek';
         var amount = sekVal;
         $.ajax({
-            type: "POST",
-            url: "/api/" + currency + "/" + amount,
+            type: "GET",
+            url: "/api/v1/curr_val/" + currency + "/" + amount,
             data: "",
             success : function(text){
                 formSuccess(text);

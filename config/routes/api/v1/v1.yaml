@@ -1,0 +1,4 @@
+currency_value:
+  path: /curr_val/{currency}/{amount}
+  controller: App\Controller\Api\V1\ApiController::getCurrentRates
+  methods: [GET]
